@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: twitter-feed-deployment
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: twitter-feed
+    spec:
+      containers:
+      - name: twitter-feed
+        image: juliaaano/twitter-feed:1.0.0
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: app-logs
+          mountPath: /app/logs
+      volumes:
+      - name: app-logs
+        emptyDir: {}
