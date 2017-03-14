@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: twitter-feed-deployment
 spec:
-  replicas: 5
+  replicas: 1
   template:
     metadata:
       labels:
@@ -12,6 +12,11 @@ spec:
       containers:
       - name: twitter-feed
         image: juliaaano/twitter-feed:1.0.0
+        env:
+        - name: TWITTER_CONSUMER_KEY
+        - name: TWITTER_CONSUMER_SECRET
+        - name: TWITTER_ACCESS_TOKEN
+        - name: TWITTER_ACCESS_TOKEN_SECRET
         ports:
         - containerPort: 8000
         volumeMounts:
