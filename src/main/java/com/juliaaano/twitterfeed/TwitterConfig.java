@@ -4,7 +4,6 @@ import static java.lang.System.getenv;
 
 class TwitterConfig {
 
-    static final String TWITTER_POLL_DELAY = env("TWITTER_POLL_DELAY", "10000");
     static final String TWITTER_TRACK_KEYWORD = env("TWITTER_TRACK_KEYWORD", "juliaaano");
 
     static final String TWITTER_CONSUMER_KEY = getenv("TWITTER_CONSUMER_KEY");

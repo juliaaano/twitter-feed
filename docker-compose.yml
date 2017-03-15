@@ -8,7 +8,6 @@ services:
       context: .
       dockerfile: Dockerfile-build
     environment:
-      TWITTER_POLL_DELAY: 10000
       TWITTER_TRACK_KEYWORD: "juliaaano"
       TWITTER_CONSUMER_KEY:
       TWITTER_CONSUMER_SECRET:

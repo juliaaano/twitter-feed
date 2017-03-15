@@ -13,8 +13,6 @@ spec:
       - name: twitter-feed
         image: juliaaano/twitter-feed:1.0.0
         env:
-        - name: TWITTER_POLL_DELAY
-          value: 1000
         - name: TWITTER_TRACK_KEYWORD
           value: "TyroCodeBlitz,Tyro,CodeBlitz"
         - name: TWITTER_CONSUMER_KEY
