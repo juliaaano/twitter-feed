@@ -16,7 +16,7 @@ public class TwitterFeedRouteBuilder extends RouteBuilder {
 
         from("seda:tweets")
             .routeId("tweets-logger")
-            .routeDescription("Logs out tweets from the queue.")
+            .routeDescription("Logs the tweets.")
             .log(INFO, "${body}");
     }
 }
