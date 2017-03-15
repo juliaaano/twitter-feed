@@ -4,6 +4,7 @@ import org.apache.camel.component.twitter.TwitterComponent;
 import org.apache.camel.main.Main;
 import org.slf4j.MDC;
 
+import static com.juliaaano.twitterfeed.AsciiBanner.asciiBanner;
 import static com.juliaaano.twitterfeed.TwitterConfig.*;
 
 public class AppBootstrap {
@@ -11,7 +12,7 @@ public class AppBootstrap {
     public static void main(String... args) throws Exception {
 
         MDC.put("Correlation-Id", "correlation-id");
-        AsciiBanner.asciiBanner("application-ascii-banner.txt").ifPresent(AsciiBanner::print);
+        asciiBanner("application-ascii-banner.txt").ifPresent(AsciiBanner::print);
 
         final Main main = new Main();
 

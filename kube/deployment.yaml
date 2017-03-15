@@ -14,13 +14,25 @@ spec:
         image: juliaaano/twitter-feed:1.0.0
         env:
         - name: TWITTER_CONSUMER_KEY
-          value: $TWITTER_CONSUMER_KEY
+          valueFrom:
+            secretKeyRef:
+              name: twitter-secret
+              key: TWITTER_CONSUMER_KEY
         - name: TWITTER_CONSUMER_SECRET
-          value: $TWITTER_CONSUMER_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: twitter-secret
+              key: TWITTER_CONSUMER_SECRET
         - name: TWITTER_ACCESS_TOKEN
-          value: $TWITTER_ACCESS_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: twitter-secret
+              key: TWITTER_ACCESS_TOKEN
         - name: TWITTER_ACCESS_TOKEN_SECRET
-          value: $TWITTER_ACCESS_TOKEN_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: twitter-secret
+              key: TWITTER_ACCESS_TOKEN_SECRET
         ports:
         - containerPort: 8000
         volumeMounts:
