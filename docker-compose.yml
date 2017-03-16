@@ -13,11 +13,26 @@ services:
       TWITTER_CONSUMER_SECRET:
       TWITTER_ACCESS_TOKEN:
       TWITTER_ACCESS_TOKEN_SECRET:
+      INFLUXDB_URL: "http://influxdb:8086"
+      INFLUXDB_USERNAME: "root"
+      INFLUXDB_PASSWORD: "root"
     ports:
       - "8000:8000"
     volumes:
       - logs:/app/logs
       - maven:/root/.m2
+    links:
+      - influxdb
+
+  influxdb:
+    image: influxdb:1.2.2
+    environment:
+      INFLUXDB_ADMIN_ENABLED: "true"
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+    volumes:
+      - influxdb:/var/lib/influxdb
 
 volumes:
 
@@ -25,6 +40,9 @@ volumes:
     driver: local
 
   maven:
+    driver: local
+
+  influxdb:
     driver: local
 
 networks:

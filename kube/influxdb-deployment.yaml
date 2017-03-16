@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: influxdb-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+      - name: influxdb
+        image: influxdb:1.2.2
+        env:
+        - name: INFLUXDB_ADMIN_ENABLED
+          value: "true"
+        ports:
+        - containerPort: 8083
+        - containerPort: 8086
+        volumeMounts:
+        - name: influxdb
+          mountPath: /var/lib/influxdb
+      volumes:
+      - name: influxdb
+        emptyDir: {}

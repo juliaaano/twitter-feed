@@ -35,8 +35,13 @@ spec:
             secretKeyRef:
               name: twitter-secret
               key: TWITTER_ACCESS_TOKEN_SECRET
-        ports:
-        - containerPort: 8000
+        - name: INFLUXDB_URL
+          value: "http://influxdb:8086"
+        - name: INFLUXDB_USERNAME
+          value: "root"
+        - name: INFLUXDB_PASSWORD
+          value: "root"
+#        imagePullPolicy: Always
         volumeMounts:
         - name: app-logs
           mountPath: /app/logs

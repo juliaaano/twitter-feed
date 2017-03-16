@@ -2,9 +2,12 @@ package com.juliaaano.twitterfeed;
 
 import org.apache.camel.component.twitter.TwitterComponent;
 import org.apache.camel.main.Main;
+import org.influxdb.InfluxDB;
+import org.influxdb.InfluxDBFactory;
 import org.slf4j.MDC;
 
 import static com.juliaaano.twitterfeed.AsciiBanner.asciiBanner;
+import static com.juliaaano.twitterfeed.InfluxDBConfig.*;
 import static com.juliaaano.twitterfeed.TwitterConfig.*;
 
 public class AppBootstrap {
@@ -16,10 +19,20 @@ public class AppBootstrap {
 
         final Main main = new Main();
 
+        main.bind("influxdbBean", influxdbBean());
         main.bind("twitter", twitterComponent());
         main.addRouteBuilder(new TwitterFeedRouteBuilder());
 
         main.run(args);
+    }
+
+    private static InfluxDB influxdbBean() {
+
+        return InfluxDBFactory.connect(
+                INFLUXDB_URL,
+                INFLUXDB_USERNAME,
+                INFLUXDB_PASSWORD
+        );
     }
 
     private static TwitterComponent twitterComponent() {
