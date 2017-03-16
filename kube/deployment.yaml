@@ -36,7 +36,7 @@ spec:
               name: twitter-secret
               key: TWITTER_ACCESS_TOKEN_SECRET
         - name: INFLUXDB_URL
-          value: "http://influxdb:8086"
+          value: "http://influxdb-svc:8086"
         - name: INFLUXDB_USERNAME
           value: "root"
         - name: INFLUXDB_PASSWORD
