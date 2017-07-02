@@ -1,8 +1,18 @@
-FROM java:8
+### BUILDER IMAGE ###
+FROM maven:3 as builder
 
-MAINTAINER Juliano Boesel Mohr <juliaaano@gmail.com>
+COPY ./ ./build
 
-COPY target/twitter-feed-*.jar app/app.jar
+RUN mvn -q -f build clean package -DskipTests \
+	&& mkdir app \
+	&& mv build/target/app-*.jar app/app.jar \
+	&& rm -rf build
+
+
+### PRODUCTION IMAGE ###
+FROM openjdk:8-jre-alpine
+
+COPY --from=builder app/app.jar app/app.jar
 
 WORKDIR /app
 

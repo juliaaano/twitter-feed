@@ -6,7 +6,6 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile-build
     environment:
       TWITTER_TRACK_KEYWORD: "juliaaano"
       TWITTER_CONSUMER_KEY:
@@ -20,7 +19,6 @@ services:
       - "8000:8000"
     volumes:
       - logs:/app/logs
-      - maven:/root/.m2
     links:
       - influxdb
 
@@ -37,9 +35,6 @@ services:
 volumes:
 
   logs:
-    driver: local
-
-  maven:
     driver: local
 
   influxdb:
