@@ -54,7 +54,6 @@
             <version>${camel.version}</version>
         </dependency>
 
-
         <!-- Logging -->
 
         <dependency>
